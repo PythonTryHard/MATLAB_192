@@ -13,7 +13,7 @@ syms x y real
 f = 2*x.^(y)-y.^(2)-4*x.^(2)+3*y;
 
 % Calculate first-order derivative's root such that FOD  =  =  0
-[a, b] = solve([char(diff(f,'x')) ' = 0'],[char(diff(f,'y')) ' = 0']);
+[a,b] = solve([diff(f,'x') == 0, diff(f,'y') == 0]);
 a = double(a);
 b = double(b);
 
