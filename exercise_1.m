@@ -19,7 +19,7 @@ b = double(b);
 
 % Second-order differential check
 A = diff(f,2,x);
-B = diff(f,x);B = diff(B,y);
+B = diff(diff(f,x),y);
 C = diff(f,2,y);
 
 % Create arrays to contain values
