@@ -32,10 +32,10 @@ f1=n1(1,1)*(x-x0)+n1(1,2)*(y-y0)+n1(1,3)*(z-z0); %tangent surface
 disp(['Function of tangent surface is: ' char(f1) ' = 0' ])
 
 
-% Draw unit normal vector
+%%  Draw unit normal vector
 p0=[x0 y0 z0]; % Initial point
 
-% Calculate the gradient vectors
+% Normalize the length
 grad1=double(n1(1,1)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
 grad2=double(n1(1,2)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
 grad3=double(n1(1,3)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
@@ -45,10 +45,12 @@ grad = [grad1 grad2 grad3]; % Setting up gradient vector
 disp('Unit normal vector is: ')
 disp(grad)
 
-p1=[grad(1,1)+x0 grad(1,2)+y0 grad(1,3)+z0]; % Second point
+p1=[grad(1,1)+x0 grad(1,2)+y0 grad(1,3)+z0]; % Second point to draw the vector
 c=zeros(1,3); c=double(c);
 starts=zeros(3,3);
 ends=[p0;p1;c];
+
+% Draw vector from origin to the second point defined above
 quiver3(starts(:,1), starts(:,2), starts(:,3), ends(:,1), ends(:,2), ends(:,3),'Color',[1 0 0],'LineWidth',1.5);
 hold on
 
