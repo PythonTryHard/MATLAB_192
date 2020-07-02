@@ -30,18 +30,22 @@ n1=double(n1); % Convert gradient vector to double
 % Establish the tangent surface's equation and output
 f1=n1(1,1)*(x-x0)+n1(1,2)*(y-y0)+n1(1,3)*(z-z0); %tangent surface
 disp(['Function of tangent surface is: ' char(f1) ' = 0' ])
-disp('Unit normal vector is: ')
+
 
 % Draw unit normal vector
 p0=[x0 y0 z0]; % Initial point
-grad1=n1(1,1)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2);
-grad1=double(grad1);
-grad2=n1(1,2)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2);
-grad2=double(grad2);
-grad3=n1(1,3)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2);
-grad3=double(grad3);
-grad=[grad1 grad2 grad3] % set up gradient vector
-p1=[grad(1,1)+x0 grad(1,2)+y0 grad(1,3)+z0];% second point
+
+% Calculate the gradient vectors
+grad1=double(n1(1,1)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
+grad2=double(n1(1,2)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
+grad3=double(n1(1,3)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
+
+grad = [grad1 grad2 grad3]; % Setting up gradient vector
+
+disp('Unit normal vector is: ')
+disp(grad)
+
+p1=[grad(1,1)+x0 grad(1,2)+y0 grad(1,3)+z0]; % Second point
 c=zeros(1,3); c=double(c);
 starts=zeros(3,3);
 ends=[p0;p1;c];
