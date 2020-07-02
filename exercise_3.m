@@ -1,9 +1,24 @@
 function exercise_3
+
+% Clean-up
 clc
+
+% Declare symbolic variables
 syms x y z
+
+% Get user input. Input will be sanitized later.
 disp('Enter any point belongs to the sphere')
 x0=input('x0= ');y0=input('y0= ');z0=input('z0= ');
+
+% Define spherical equation
 f=x.^2+y.^2+z.^2-9; %F=f(x,y,z)-k where k=9
+
+% Input sanitization
+if subs(f, [x y z], [x0 y0 z0]) ~= 0
+    disp("Point doesn't belong on sphere. Exiting")
+    return
+end
+
 P=diff(f,'x'); Q=diff(f,'y'); R=diff(f,'z');
 n=[P Q R]; %calculate partial derivative
 n1=subs(n,[x y z],[x0 y0 z0]); 
