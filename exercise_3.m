@@ -36,9 +36,11 @@ disp(['Function of tangent surface is: ' char(f1) ' = 0' ])
 p0=[x0 y0 z0]; % Initial point
 
 % Normalize the length
-grad1=double(n1(1,1)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
-grad2=double(n1(1,2)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
-grad3=double(n1(1,3)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2));
+true_length = sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2);
+
+grad1=double(n1(1,1)/true_length);
+grad2=double(n1(1,2)/true_length);
+grad3=double(n1(1,3)/true_length);
 
 grad = [grad1 grad2 grad3]; % Setting up gradient vector
 
