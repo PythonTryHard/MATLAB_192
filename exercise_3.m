@@ -19,16 +19,21 @@ if subs(f, [x y z], [x0 y0 z0]) ~= 0
     return
 end
 
+% Gradient equations of any point on the sphere
 P=diff(f,'x'); Q=diff(f,'y'); R=diff(f,'z');
-n=[P Q R]; %calculate partial derivative
+
+% Calculate partial derivative
+n=[P Q R]; 
 n1=subs(n,[x y z],[x0 y0 z0]); 
-n1=double(n1); %gradient vector
+n1=double(n1); % Convert gradient vector to double
+
+% Establish the tangent surface's equation and output
 f1=n1(1,1)*(x-x0)+n1(1,2)*(y-y0)+n1(1,3)*(z-z0); %tangent surface
 disp(['Function of tangent surface is: ' char(f1) ' = 0' ])
 disp('Unit normal vector is: ')
 
 % Draw unit normal vector
-p0=[x0 y0 z0]; %initial point
+p0=[x0 y0 z0]; % Initial point
 grad1=n1(1,1)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2);
 grad1=double(grad1);
 grad2=n1(1,2)/sqrt((n1(1,1)).^2+(n1(1,2)).^2+(n1(1,3)).^2);
